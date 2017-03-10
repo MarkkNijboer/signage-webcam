@@ -17,7 +17,7 @@
 //
 VCapture::VCapture(std::string casc_path)
 {
-    this->cap = cv::VideoCapture(0);
+    this->cap = cv::VideoCapture(1);
     this->casc_path = casc_path;
 }
 

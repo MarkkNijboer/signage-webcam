@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D4AA2871E66D67A00C9FBE5 /* socketserver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D4AA2851E66D67A00C9FBE5 /* socketserver.cpp */; };
 		4D8F507F1E1ED61500F0B65E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D8F507E1E1ED61500F0B65E /* main.cpp */; };
+		4D94F0751E718F00008D8816 /* faceidentifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D94F0731E718F00008D8816 /* faceidentifier.cpp */; };
+		4DEB6CC81E5D929F00E0A36E /* VCapture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DEB6CC61E5D929F00E0A36E /* VCapture.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,8 +26,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4D4AA2851E66D67A00C9FBE5 /* socketserver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = socketserver.cpp; sourceTree = "<group>"; };
+		4D4AA2861E66D67A00C9FBE5 /* socketserver.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = socketserver.hpp; sourceTree = "<group>"; };
 		4D8F507B1E1ED61500F0B65E /* cameraTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = cameraTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D8F507E1E1ED61500F0B65E /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		4D94F0731E718F00008D8816 /* faceidentifier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = faceidentifier.cpp; sourceTree = "<group>"; };
+		4D94F0741E718F00008D8816 /* faceidentifier.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = faceidentifier.hpp; sourceTree = "<group>"; };
+		4DE6135A1E201BD2003D5AFA /* haarcascade_eye_tree_eyeglasses.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = haarcascade_eye_tree_eyeglasses.xml; sourceTree = "<group>"; };
+		4DE6135B1E201DB9003D5AFA /* haarcascade_frontalface_alt.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = haarcascade_frontalface_alt.xml; sourceTree = "<group>"; };
+		4DEB6CC61E5D929F00E0A36E /* VCapture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VCapture.cpp; sourceTree = "<group>"; };
+		4DEB6CC71E5D929F00E0A36E /* VCapture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = VCapture.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +69,14 @@
 			isa = PBXGroup;
 			children = (
 				4D8F507E1E1ED61500F0B65E /* main.cpp */,
+				4DEB6CC61E5D929F00E0A36E /* VCapture.cpp */,
+				4DEB6CC71E5D929F00E0A36E /* VCapture.hpp */,
+				4DE6135A1E201BD2003D5AFA /* haarcascade_eye_tree_eyeglasses.xml */,
+				4DE6135B1E201DB9003D5AFA /* haarcascade_frontalface_alt.xml */,
+				4D4AA2851E66D67A00C9FBE5 /* socketserver.cpp */,
+				4D4AA2861E66D67A00C9FBE5 /* socketserver.hpp */,
+				4D94F0731E718F00008D8816 /* faceidentifier.cpp */,
+				4D94F0741E718F00008D8816 /* faceidentifier.hpp */,
 			);
 			path = cameraTest;
 			sourceTree = "<group>";
@@ -120,7 +139,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D4AA2871E66D67A00C9FBE5 /* socketserver.cpp in Sources */,
+				4D94F0751E718F00008D8816 /* faceidentifier.cpp in Sources */,
 				4D8F507F1E1ED61500F0B65E /* main.cpp in Sources */,
+				4DEB6CC81E5D929F00E0A36E /* VCapture.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,7 +240,43 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 3G8C2WNLS8;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					/usr/local/opt/openssl/include,
+					/usr/local/Cellar/libuv/1.11.0/include,
+					/usr/local/opt/zlib/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
+					/usr/local/Cellar/libuv/1.11.0/lib,
+					/usr/local/opt/openssl/lib,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_LDFLAGS = (
+					"-lopencv_calib3d",
+					"-lopencv_core",
+					"-lopencv_features2d",
+					"-lopencv_flann",
+					"-lopencv_highgui",
+					"-lopencv_imgcodecs",
+					"-lopencv_imgproc",
+					"-lopencv_ml",
+					"-lopencv_objdetect",
+					"-lopencv_photo",
+					"-lopencv_shape",
+					"-lopencv_stitching",
+					"-lopencv_superres",
+					"-lopencv_video",
+					"-lopencv_videoio",
+					"-lopencv_videostab",
+					"-lssl",
+					"-lcrypto",
+					"-luws",
+					"-lz",
+					"-luv",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USE_HEADERMAP = YES;
 			};
 			name = Debug;
 		};
@@ -226,7 +284,43 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 3G8C2WNLS8;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					/usr/local/opt/openssl/include,
+					/usr/local/Cellar/libuv/1.11.0/include,
+					/usr/local/opt/zlib/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
+					/usr/local/Cellar/libuv/1.11.0/lib,
+					/usr/local/opt/openssl/lib,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_LDFLAGS = (
+					"-lopencv_calib3d",
+					"-lopencv_core",
+					"-lopencv_features2d",
+					"-lopencv_flann",
+					"-lopencv_highgui",
+					"-lopencv_imgcodecs",
+					"-lopencv_imgproc",
+					"-lopencv_ml",
+					"-lopencv_objdetect",
+					"-lopencv_photo",
+					"-lopencv_shape",
+					"-lopencv_stitching",
+					"-lopencv_superres",
+					"-lopencv_video",
+					"-lopencv_videoio",
+					"-lopencv_videostab",
+					"-lssl",
+					"-lcrypto",
+					"-luws",
+					"-lz",
+					"-luv",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USE_HEADERMAP = YES;
 			};
 			name = Release;
 		};
@@ -249,6 +343,7 @@
 				4D8F50841E1ED61500F0B65E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

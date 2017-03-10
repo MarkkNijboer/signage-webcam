@@ -110,7 +110,7 @@ std::string FaceIdentifier::getRandomIdentifier(int size) {
 
 FaceIdentifier::NamedFace FaceIdentifier::storeNewFace(VCapture::Face face)
 {
-    std::string id = this->getRandomIdentifier(10);
+    std::string id = this->getRandomIdentifier(20);
     
     FaceStorage st;
     st.name = id;
