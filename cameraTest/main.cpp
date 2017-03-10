@@ -8,7 +8,7 @@
 
 #include <thread>
 
-#include "VCapture.hpp"
+#include "capture.hpp"
 #include "socketserver.hpp"
 
 void doRunCap(VCapture * capture)

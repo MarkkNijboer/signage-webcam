@@ -6,7 +6,7 @@
 //  Copyright © 2017 Mark Nijboer. All rights reserved.
 //
 
-#include "VCapture.hpp"
+#include "capture.hpp"
 #include "socketserver.hpp"
 #include "faceidentifier.hpp"
 

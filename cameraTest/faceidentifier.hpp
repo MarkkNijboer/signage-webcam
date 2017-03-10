@@ -10,7 +10,7 @@
 #define faceidentifier_hpp
 
 #include <stdio.h>
-#include "VCapture.hpp"
+#include "capture.hpp"
 
 class FaceIdentifier
 {
