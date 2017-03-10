@@ -28,16 +28,17 @@ private:
         struct VCapture::Face face[FACE_HISTORY_LENGTH];
     };
     
-    static std::vector<FaceStorage> storedFaces;
+    std::vector<FaceStorage> storedFaces;
     
-    static void shiftFaces();
-    static bool faceIsEmpty(VCapture::Face);
-    static bool identifiedFaceIsEmpty(FaceStorage face);
-    static std::string getRandomIdentifier(int size);
+    void shiftFaces();
+    bool faceIsEmpty(VCapture::Face);
+    bool identifiedFaceIsEmpty(FaceStorage face);
+    std::string getRandomIdentifier(int size);
+    FaceIdentifier::NamedFace storeNewFace(VCapture::Face face);
     
 public:
-    static void init();
-    static std::vector<NamedFace> identifyFaces(std::vector<VCapture::Face> faces);
+    void init();
+    std::vector<NamedFace> identifyFaces(std::vector<VCapture::Face> faces);
     
 };
 

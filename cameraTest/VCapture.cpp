@@ -8,6 +8,7 @@
 
 #include "VCapture.hpp"
 #include "socketserver.hpp"
+#include "faceidentifier.hpp"
 
 
 // Constructor
@@ -40,7 +41,9 @@ void VCapture::run()
     cv::CascadeClassifier cascade = this->init_facial_recognition();
     
     cv::Mat img;
-    std::vector<struct Face> prev_faces;
+    std::vector<struct FaceIdentifier::NamedFace> prevFaces;
+    FaceIdentifier faceIdentifier;
+    
     
     while (this->now_running)
     {
@@ -51,29 +54,33 @@ void VCapture::run()
         img = this->resize_frame(img);
         
         std::vector<struct VCapture::Face> faces = this->find_faces(img, cascade);
-        if (faces.size() == prev_faces.size())
+        std::vector<struct FaceIdentifier::NamedFace> namedFaces = faceIdentifier.identifyFaces(faces);
+        if (namedFaces.size() == prevFaces.size())
         {
-            std::string output = "{\"frame\":{\"faces\": [";
+            std::string output = "{\"frame\":{\"faces\": {";
             
-            for (size_t i = 0; i < faces.size(); i++)
+            for (size_t i = 0; i < namedFaces.size(); i++)
             {
                 if (i > 0)
                 {
                     output.append(",");
                 }
                 
-                output.append("{\"x\":");
-                output.append(std::to_string(faces[i].x));
+                output.append("\"");
+                output.append(namedFaces[i].name);
+                output.append("\"");
+                output.append(":{\"x\":");
+                output.append(std::to_string(namedFaces[i].face.x));
                 output.append(",\"y\":");
-                output.append(std::to_string(faces[i].y));
+                output.append(std::to_string(namedFaces[i].face.y));
                 output.append(",\"w\":");
-                output.append(std::to_string(faces[i].width));
+                output.append(std::to_string(namedFaces[i].face.width));
                 output.append(",\"h\":");
-                output.append(std::to_string(faces[i].height));
+                output.append(std::to_string(namedFaces[i].face.height));
                 output.append("}");
             }
                 
-            output.append("],\"sizes\":{\"x\":");
+            output.append("},\"sizes\":{\"x\":");
             output.append(std::to_string(img.cols));
             output.append(",\"y\":");
             output.append(std::to_string(img.rows));
@@ -81,7 +88,7 @@ void VCapture::run()
             
             CamSocketServer::broadcast(output);
         }
-        prev_faces = faces;
+        prevFaces = namedFaces;
         
         /*imshow("opencv", img);*/
         if (cv::waitKey(10)>=0)

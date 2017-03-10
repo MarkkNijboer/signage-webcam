@@ -12,12 +12,12 @@
 #include <stdio.h>
 #include <opencv2/opencv.hpp>
 
+
 class VCapture
 {
     
 private:
     cv::VideoCapture cap;
-    
     bool now_running = true;
     
     std::string casc_path = "";
