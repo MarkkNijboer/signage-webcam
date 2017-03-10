@@ -19,7 +19,7 @@ std::vector<FaceIdentifier::NamedFace> FaceIdentifier::identifyFaces(std::vector
     // Check if face storage is empty
     if (this->storedFaces.size() == 0)
     {
-        for (size_t i = 0; i < face.size(); i++)
+        for (int i = 0; i < face.size(); i++)
         {
             NamedFace nf = this->storeNewFace(face[i]);
             namedFaces.push_back(nf);
@@ -27,11 +27,12 @@ std::vector<FaceIdentifier::NamedFace> FaceIdentifier::identifyFaces(std::vector
     }
     else
     {
+        // Generate a mean for every stored face
         std::vector<FaceIdentifier::NamedFace> meanFaces;
-        for (size_t i = 0; i < this->storedFaces.size(); i++)
+        for (int i = 0; i < this->storedFaces.size(); i++)
         {
             VCapture::Face *tempFace;
-            for (size_t j = 0; j < this->FACE_HISTORY_LENGTH; j++)
+            for (int j = 0; j < this->FACE_HISTORY_LENGTH; j++)
             {
                 if (!this->faceIsEmpty(this->storedFaces.at(i).face[j])) {
                     tempFace = &this->storedFaces.at(i).face[j];
@@ -52,9 +53,11 @@ std::vector<FaceIdentifier::NamedFace> FaceIdentifier::identifyFaces(std::vector
             }
         }
         
-        for (size_t i = 0; i < face.size(); i++)
+        
+        // Compare which face (@param) fits best with the stored faces
+        for (int i = 0; i < face.size(); i++)
         {
-            for (size_t j = 0; j < meanFaces.size(); j++)
+            for (int j = 0; j < meanFaces.size(); j++)
             {
                 if (face[i].x < meanFaces.at(j).face.x + this->THRESHOLD_PIXELS && face[i].x > meanFaces.at(j).face.x - this->THRESHOLD_PIXELS
                     && face[i].y < meanFaces.at(j).face.y + this->THRESHOLD_PIXELS && face[i].y > meanFaces.at(j).face.y - this->THRESHOLD_PIXELS
@@ -62,7 +65,7 @@ std::vector<FaceIdentifier::NamedFace> FaceIdentifier::identifyFaces(std::vector
                     && face[i].height < meanFaces.at(j).face.height + this->THRESHOLD_PIXELS && face[i].height > meanFaces.at(j).face.height - this->THRESHOLD_PIXELS)
                 {
                     // Append this face to the right storage track.
-                    for (size_t k = 0; k < this->storedFaces.size(); k++)
+                    for (int k = 0; k < this->storedFaces.size(); k++)
                     {
                         // Find right track
                         if (this->storedFaces.at(k).name == meanFaces.at(j).name)
@@ -127,13 +130,13 @@ FaceIdentifier::NamedFace FaceIdentifier::storeNewFace(VCapture::Face face)
 void FaceIdentifier::shiftFaces()
 {
     
-    for (size_t i = 0; i < this->storedFaces.size(); i++)
+    for (int i = 0; i < this->storedFaces.size(); i++)
     {
         FaceStorage *face = &this->storedFaces.at(i);
         
         // Shift the array one position to the right
         // 255 simontanious heads is plenty enough
-        ushort newPosition;
+        int newPosition;
         for(newPosition = this->FACE_HISTORY_LENGTH-1; newPosition > 0;newPosition--)
         {
             face->face[newPosition]=face->face[newPosition - 1];
@@ -159,7 +162,7 @@ void FaceIdentifier::shiftFaces()
 
 bool FaceIdentifier::identifiedFaceIsEmpty(FaceStorage face)
 {
-    for (size_t i = 0; i < this->FACE_HISTORY_LENGTH; i++)
+    for (int i = 0; i < this->FACE_HISTORY_LENGTH; i++)
     {
         if (!this->faceIsEmpty(face.face[i]))
         {

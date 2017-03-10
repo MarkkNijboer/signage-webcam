@@ -59,7 +59,7 @@ void VCapture::run()
         {
             std::string output = "{\"frame\":{\"faces\": {";
             
-            for (size_t i = 0; i < namedFaces.size(); i++)
+            for (int i = 0; i < namedFaces.size(); i++)
             {
                 if (i > 0)
                 {
@@ -131,9 +131,9 @@ std::vector<struct VCapture::Face> VCapture::find_faces(cv::Mat &frame, cv::Casc
     
     std::vector<struct VCapture::Face> faces_filtered;
     
-    for (size_t i = 0; i < faces.size(); i++)
+    for (int i = 0; i < faces.size(); i++)
     {
-        size_t j;
+        int j;
         cv::Rect r = faces[i];
         for (j = 0; j < faces.size(); j++)
         {
@@ -158,7 +158,7 @@ std::vector<struct VCapture::Face> VCapture::find_faces(cv::Mat &frame, cv::Casc
     /*
     
     // Code for displaying faces as rectangles on the image
-    for (size_t i = 0; i <faces_filtered.size(); i++)
+    for (int i = 0; i <faces_filtered.size(); i++)
     {
         cv::Rect r = faces_filtered[i];
         rectangle(frame, r.tl(), r.br(), cv::Scalar(0,255,0), 1);
