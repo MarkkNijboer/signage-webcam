@@ -14,8 +14,6 @@ std::vector<FaceIdentifier::NamedFace> FaceIdentifier::identifyFaces(std::vector
     std::vector<FaceIdentifier::NamedFace> namedFaces;
     this->shiftFaces();
     
-    std::cout << this->storedFaces.size() << std::endl;
-    
     // Check if face storage is empty
     if (this->storedFaces.size() == 0)
     {

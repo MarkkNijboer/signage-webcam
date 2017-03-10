@@ -10,6 +10,7 @@
 		4D4AA2871E66D67A00C9FBE5 /* socketserver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D4AA2851E66D67A00C9FBE5 /* socketserver.cpp */; };
 		4D8F507F1E1ED61500F0B65E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D8F507E1E1ED61500F0B65E /* main.cpp */; };
 		4D94F0751E718F00008D8816 /* faceidentifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D94F0731E718F00008D8816 /* faceidentifier.cpp */; };
+		4D94F07A1E72D723008D8816 /* capture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D94F0761E72D135008D8816 /* capture.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,8 +34,6 @@
 		4D94F0741E718F00008D8816 /* faceidentifier.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = faceidentifier.hpp; sourceTree = "<group>"; };
 		4D94F0761E72D135008D8816 /* capture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = capture.cpp; sourceTree = "<group>"; };
 		4D94F0781E72D20A008D8816 /* capture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = capture.hpp; sourceTree = "<group>"; };
-		4DE6135A1E201BD2003D5AFA /* haarcascade_eye_tree_eyeglasses.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = haarcascade_eye_tree_eyeglasses.xml; sourceTree = "<group>"; };
-		4DE6135B1E201DB9003D5AFA /* haarcascade_frontalface_alt.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = haarcascade_frontalface_alt.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,8 +69,6 @@
 				4D94F0781E72D20A008D8816 /* capture.hpp */,
 				4D94F0761E72D135008D8816 /* capture.cpp */,
 				4D8F507E1E1ED61500F0B65E /* main.cpp */,
-				4DE6135A1E201BD2003D5AFA /* haarcascade_eye_tree_eyeglasses.xml */,
-				4DE6135B1E201DB9003D5AFA /* haarcascade_frontalface_alt.xml */,
 				4D4AA2851E66D67A00C9FBE5 /* socketserver.cpp */,
 				4D4AA2861E66D67A00C9FBE5 /* socketserver.hpp */,
 				4D94F0731E718F00008D8816 /* faceidentifier.cpp */,
@@ -138,6 +135,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D94F07A1E72D723008D8816 /* capture.cpp in Sources */,
 				4D4AA2871E66D67A00C9FBE5 /* socketserver.cpp in Sources */,
 				4D94F0751E718F00008D8816 /* faceidentifier.cpp in Sources */,
 				4D8F507F1E1ED61500F0B65E /* main.cpp in Sources */,
@@ -244,6 +242,7 @@
 					/usr/local/Cellar/libuv/1.11.0/include,
 					/usr/local/opt/zlib/include,
 				);
+				LD_GENERATE_MAP_FILE = YES;
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/lib,
 					/usr/local/Cellar/libuv/1.11.0/lib,
@@ -288,6 +287,7 @@
 					/usr/local/Cellar/libuv/1.11.0/include,
 					/usr/local/opt/zlib/include,
 				);
+				LD_GENERATE_MAP_FILE = YES;
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/lib,
 					/usr/local/Cellar/libuv/1.11.0/lib,

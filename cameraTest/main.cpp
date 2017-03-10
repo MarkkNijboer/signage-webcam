@@ -24,7 +24,7 @@ void doRunServ(CamSocketServer * server)
 
 int main (int argc, const char * argv[])
 {
-    VCapture cap("/Users/mark/Documents/Development/C++/cameraTest/cameraTest/haarcascade_frontalface_alt.xml");
+    VCapture cap("/Users/mark/Documents/Development/C++/cameraTest/assets/haarcascade_frontalface_alt.xml");
     std::thread thrCam(doRunCap, &cap);
     
     CamSocketServer server;

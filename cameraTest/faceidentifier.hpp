@@ -37,7 +37,6 @@ private:
     FaceIdentifier::NamedFace storeNewFace(VCapture::Face face);
     
 public:
-    void init();
     std::vector<NamedFace> identifyFaces(std::vector<VCapture::Face> faces);
     
 };
