@@ -6,10 +6,32 @@
 //  Copyright © 2017 Mark Nijboer. All rights reserved.
 //
 
-#include <iostream>
+#include <thread>
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+#include "VCapture.hpp"
+#include "socketserver.hpp"
+
+void doRunCap(VCapture * capture)
+{
+    capture->run();
+}
+
+void doRunServ(CamSocketServer * server)
+{
+    server->run();
+}
+
+
+int main (int argc, const char * argv[])
+{
+    VCapture cap("/Users/mark/Documents/Development/C++/cameraTest/cameraTest/haarcascade_frontalface_alt.xml");
+    std::thread thrCam(doRunCap, &cap);
+    
+    CamSocketServer server;
+    std::thread thrServ(doRunServ, &server);
+    
+    thrCam.join();
+    thrServ.join();
+    
     return 0;
 }
